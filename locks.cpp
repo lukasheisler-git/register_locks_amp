@@ -1,0 +1,199 @@
+#include "locks.hpp"
+
+BoulangerieLock::BoulangerieLock(std::size_t num_threads) {
+    no_of_threads = num_threads;
+    flag = new std::atomic_bool[no_of_threads];
+    label = new std::atomic_size_t[no_of_threads];
+    for(std::size_t i=0; i<no_of_threads; i++){
+        flag[i] = false;
+        label[i] = 0;
+    }
+}
+
+void BoulangerieLock::lock(std::size_t tid) {
+    std::size_t i = tid;
+    flag[i] = true;
+    std::size_t max = label[0];
+    std::size_t limit;
+
+    //take ticket
+    for (std::size_t j = 1; j < no_of_threads; j ++) {
+        if (label[j] > max) {
+            max = label[j];
+        }
+    }
+    label[i] = max + 1;
+
+    if(label[i] == 1)
+    {
+        limit = i - 1;
+    }
+    else
+    {
+        limit = no_of_threads;
+    }
+    //wait till smallest
+    for (size_t j = 0; j < limit; j++) {
+        if (i == j) {
+            continue;
+        }
+        else{
+            while(flag[j]){};
+            while (label[j] > 0 && ((label[j] < label[i]) ||( label[i] == label[j] && j < i))) {};
+        } 
+    }
+    
+    //std::cout << "Lock obtained by thread " << tid << std::endl;
+}
+
+void BoulangerieLock::unlock(std::size_t tid) {
+    label[tid] = 0;
+    //std::cout << "Lock released by thread " << tid << std::endl;
+}
+
+
+LamportBakeryHerlihyLock::LamportBakeryHerlihyLock(std::size_t num_threads) {
+    no_of_threads = num_threads;
+    flag = new std::atomic_bool[no_of_threads];
+    label = new std::atomic_size_t[no_of_threads];
+    for(std::size_t i=0; i<no_of_threads; i++){
+        flag[i] = false;
+        label[i] = 0;
+    }
+}
+
+void LamportBakeryHerlihyLock::lock(std::size_t tid) {
+    std::size_t i = tid;
+    flag[i] = true;
+    std::size_t max = label[0];
+
+    //take ticket
+    for (std::size_t j = 1; j < no_of_threads; j ++) {
+        if (label[j] > max) {
+            max = label[j];
+        }
+    }
+    label[i] = max + 1;
+
+    //wait till smallest
+    for (size_t j = 0; j < no_of_threads; j++) {
+        if (i == j) {
+            continue;
+        }
+        else{
+            while (flag[j] && ((label[j] < label[i]) ||( label[i] == label[j] && j < i))) {};
+        } 
+    }
+    
+    //std::cout << "Lock obtained by thread " << tid << std::endl;
+}
+
+void LamportBakeryHerlihyLock::unlock(std::size_t tid) {
+    flag[tid] = false;
+    //std::cout << "Lock released by thread " << tid << std::endl;
+}
+
+
+LamportBakeryOriginalLock::LamportBakeryOriginalLock(std::size_t num_threads) {
+    no_of_threads = num_threads;
+    flag = new std::atomic_bool[no_of_threads];
+    label = new std::atomic_size_t[no_of_threads];
+    for(std::size_t i=0; i<no_of_threads; i++){
+        flag[i] = false;
+        label[i] = 0;
+    }
+}
+
+void LamportBakeryOriginalLock::lock(std::size_t tid) {
+    std::size_t i = tid;
+    flag[i] = true;
+    std::size_t max = label[0];
+
+    //take ticket
+    for (std::size_t j = 1; j < no_of_threads; j ++) {
+        if (label[j] > max) {
+            max = label[j];
+        }
+    }
+    label[i] = max + 1;
+    flag[i] = false;
+    //wait till smallest
+    for (size_t j = 0; j < no_of_threads; j++) {
+        if (i == j) {
+            continue;
+        }
+        else{
+            while(flag[j]){};
+            while (label[j] > 0 && ((label[j] < label[i]) ||( label[i] == label[j] && j < i))) {};
+        } 
+    }
+    
+    //std::cout << "Lock obtained by thread " << tid << std::endl;
+}
+
+void LamportBakeryOriginalLock::unlock(std::size_t tid) {
+    label[tid] = 0;
+    //std::cout << "Lock released by thread " << tid << std::endl;
+}
+
+
+PetersonsFilterLock::PetersonsFilterLock(std::size_t num_threads) {
+  no_of_threads = num_threads;
+  level = new std::atomic_size_t[no_of_threads];
+  victim = new std::atomic_size_t[no_of_threads];
+  for(std::size_t i=0; i<no_of_threads; i++){
+    level[i] = 0;
+  }
+}
+
+void PetersonsFilterLock::lock(std::size_t tid) {
+  for(std::size_t i=1; i<no_of_threads; i++){
+    level[tid] = i;
+    victim[i] = tid;
+    for(std::size_t k=0; k<no_of_threads; k++){
+        while( k!=tid && level[k] >=i && victim[i] == tid) {}
+    }
+  }
+  //std::cout << "Lock obtained by thread " << tid << std::endl;
+}
+
+void PetersonsFilterLock::unlock(std::size_t tid) {
+  level[tid] = 0;
+  //std::cout << "Lock released by thread " << tid << std::endl;
+}
+
+
+PetersonsNode::PetersonsNode(PetersonsNode par, std::size_t num_threads) {
+    parent = &par; //not sure if correct
+    no_of_threads = num_threads;
+    level = new std::atomic_size_t[no_of_threads];
+    victim = new std::atomic_size_t[no_of_threads];
+    for(std::size_t i=0; i<no_of_threads; i++){
+        level[i] = 0;
+    }
+}
+
+void PetersonsNode::lock(std::size_t tid) {
+  for(std::size_t i=1; i<no_of_threads; i++){
+    level[tid] = i;
+    victim[i] = tid;
+    for(std::size_t k=0; k<no_of_threads; k++){
+        while( k!=tid && level[k] >=i && victim[i] == tid) {}
+    }
+  }
+  //std::cout << "Lock obtained by thread " << tid << std::endl;
+}
+
+void PetersonsNode::unlock(std::size_t tid) {
+  level[tid] = 0;
+  //std::cout << "Lock released by thread " << tid << std::endl;
+}
+
+PetersonsTree::PetersonsTree(std::size_t num_threads){
+    if(validatePow2(num_threads))
+    {
+        no_of_threads = num_threads;
+        root = new PetersonsNode(NULL, 2);
+        
+    }
+}
