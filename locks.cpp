@@ -163,37 +163,90 @@ void PetersonsFilterLock::unlock(std::size_t tid) {
 }
 
 
-PetersonsNode::PetersonsNode(PetersonsNode par, std::size_t num_threads) {
-    parent = &par; //not sure if correct
+PetersonsNode::PetersonsNode(PetersonsNode *par, std::size_t num_threads) {
     no_of_threads = num_threads;
-    level = new std::atomic_size_t[no_of_threads];
-    victim = new std::atomic_size_t[no_of_threads];
+    parent = par; 
+    flags = new std::atomic_bool[no_of_threads];
     for(std::size_t i=0; i<no_of_threads; i++){
-        level[i] = 0;
+        flags[i] = false;
     }
 }
 
 void PetersonsNode::lock(std::size_t tid) {
-  for(std::size_t i=1; i<no_of_threads; i++){
-    level[tid] = i;
-    victim[i] = tid;
-    for(std::size_t k=0; k<no_of_threads; k++){
-        while( k!=tid && level[k] >=i && victim[i] == tid) {}
-    }
-  }
+    flags[tid] = true;
+    victim = tid;
+
+    //spin until my flag is unset and I am not victim
+    while(isAnotherFlag(tid) && isVictim(tid)){};
   //std::cout << "Lock obtained by thread " << tid << std::endl;
 }
 
 void PetersonsNode::unlock(std::size_t tid) {
-  level[tid] = 0;
+  flags[tid] = false;
   //std::cout << "Lock released by thread " << tid << std::endl;
+}
+
+bool PetersonsNode::isVictim(std::size_t tid) {
+    return victim == tid;
+}
+
+bool PetersonsNode::isAnotherFlag(std::size_t tid) {
+    for(std::size_t i = 0; i < no_of_threads; i++){
+        if(flags[i] && (i != tid))
+            return true;
+    }
+    return false;
 }
 
 PetersonsTree::PetersonsTree(std::size_t num_threads){
     if(validatePow2(num_threads))
     {
         no_of_threads = num_threads;
-        root = new PetersonsNode(NULL, 2);
-        
+        root = new PetersonsNode(nullptr, no_of_threads);
+        std::vector<PetersonsNode*> initList;
+        initList.push_back(root);
+        leaves = growTree(initList);
     }
+    else{
+        throw std::invalid_argument("Number of threads must be power of 2");
+    }
+}
+
+void PetersonsTree::lock(std::size_t tid){
+    PetersonsNode *currentNode = leafLockForThread(tid);
+    while(currentNode != nullptr){
+        currentNode->lock(tid);
+        currentNode = currentNode->parent;
+    }
+}
+
+void PetersonsTree::unlock(std::size_t tid){
+    PetersonsNode *currentNode = leafLockForThread(tid);
+    while(currentNode != nullptr){
+        currentNode->unlock(tid);
+        currentNode = currentNode->parent;
+    }
+}
+
+PetersonsNode* PetersonsTree::leafLockForThread(std::size_t tid){
+    return leaves[int(tid/2)];
+}
+
+std::vector<PetersonsNode*> PetersonsTree::growTree(std::vector<PetersonsNode*> leaves){
+    if(leaves.size() == no_of_threads/2)
+        return leaves;
+
+    std::vector<PetersonsNode*> currentLeaves;
+    for(PetersonsNode* node : leaves){
+        node->leftChild = new PetersonsNode(node, no_of_threads);
+        node->rightChild = new PetersonsNode(node, no_of_threads);
+        currentLeaves.push_back(node->leftChild);
+        currentLeaves.push_back(node->rightChild);
+    }
+
+    return growTree(currentLeaves);
+}
+
+bool PetersonsTree::validatePow2(std::size_t threads){
+    return (threads & (threads-1)) == 0;
 }

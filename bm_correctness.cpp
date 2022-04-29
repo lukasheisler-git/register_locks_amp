@@ -20,8 +20,8 @@
 int main(int argc, char *argv[]) {
 
     //variables
-    int numthreads;
-    int id;
+    std::size_t numthreads;
+    std::size_t id;
     
     std::cout << "Correctnes benchmark started! Measure if lock works" << std::endl;
     std::cout << "Maximum number of threads for this system: " << omp_get_max_threads() << std::endl;
@@ -43,7 +43,8 @@ int main(int argc, char *argv[]) {
     //possible choices for locks, uncomment only one
     //PetersonsFilterLock lock(numthreads);
     //LamportBakeryHerlihyLock lock(numthreads); 
-    LamportBakeryOriginalLock lock(numthreads);
+    //LamportBakeryOriginalLock lock(numthreads);
+    PetersonsTree lock(numthreads);
 
     std::cout << "___________________________________________________________________" << std::endl;
     std::cout << "Benchmark started! Number of threads: " << numthreads << std::endl;
