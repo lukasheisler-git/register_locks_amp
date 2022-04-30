@@ -4,8 +4,8 @@ CXXFLAGS := $(CXXFLAGS) -std=c++14 -Wall -pedantic -O3 -ffast-math -fconcepts -m
 
 all: correctness
 
-#throughput:
-#	$(CXX) $(CXXFLAGS) -o bm_throughput bm_throughput.cpp $(SOURCES) 
+throughput:
+	$(CXX) $(CXXFLAGS) -o bm_fairness_throughput bm_fairness_throughput.cpp $(SOURCES) 
 
 correctness:
 	$(CXX) $(CXXFLAGS) -o bm_correctness bm_correctness.cpp $(SOURCES)

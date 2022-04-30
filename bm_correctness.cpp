@@ -104,9 +104,6 @@ int main(int argc, char *argv[]) {
     //BoulangerieLock boulangerielock(numthreads);
     //std::cout << "Testing correctness of Boulangerie lock..." << std::endl;
     //testCorrectnes(boulangerielock);
-
-    
-
     
     return EXIT_SUCCESS;
 }
