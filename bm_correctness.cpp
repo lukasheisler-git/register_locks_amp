@@ -7,55 +7,14 @@
 #include <vector>
 #include <chrono>  // for high_resolution_clock
 #include <string>
-//necessary for sleep command:
-#ifdef _WIN32
-#include <Windows.h>
-#else
-#include <unistd.h>
-#endif
+
 
 #include "locks.hpp"
 
+void testCorrectnes(auto &lock){
 
-int main(int argc, char *argv[]) {
-
-    //variables
-    std::size_t numthreads;
+    std::size_t control;
     std::size_t id;
-    
-    std::cout << "Correctnes benchmark started! Measure if lock works" << std::endl;
-    std::cout << "Maximum number of threads for this system: " << omp_get_max_threads() << std::endl;
-
-    //parse command line arguments
-    assert(argc == 2);
-    {
-        std::istringstream tmp(argv[1]);
-        tmp >> numthreads;
-    }
-    
-    assert(numthreads >= 1);
-    if(numthreads > omp_get_max_threads())
-    {
-        std::cout << "Number of threads too high. Reduced to maximum number of threads! " << std::endl;
-        numthreads = omp_get_max_threads(); 
-    }
-    
-    //possible choices for locks, uncomment only one
-    //PetersonsFilterLock lock(numthreads);
-    //LamportBakeryHerlihyLock lock(numthreads); 
-    //LamportBakeryOriginalLock lock(numthreads);
-    PetersonsTree lock(numthreads);
-
-    std::cout << "___________________________________________________________________" << std::endl;
-    std::cout << "Benchmark started! Number of threads: " << numthreads << std::endl;
-
-    omp_set_dynamic(0);     // Explicitly disable dynamic teams to have full control over amount of threads
-	omp_set_num_threads(numthreads); // Fixed amount of threads used for all consecutive parallel regions
-
-    int control;
-
-    
-
     #pragma omp parallel private(id) shared(lock, control) 
     {
         id = omp_get_thread_num();
@@ -82,6 +41,7 @@ int main(int argc, char *argv[]) {
                 }
             }
             
+            //check control variable after intensive work to see if another thread has joined CS
             if(control != id)
             {
                 std::cout << "Attention, not alone in critical section..." << std::endl;
@@ -90,5 +50,63 @@ int main(int argc, char *argv[]) {
         }
         
     }
-    return 0;
+    std::cout << "___________________________________________________________________" << std::endl;
+    std::cout << std::endl;
+}
+
+
+int main(int argc, char *argv[]) {
+
+    //variables
+    std::size_t numthreads;
+    
+    std::cout << "Correctnes benchmark started! Measure if lock works" << std::endl;
+    std::cout << "Maximum number of threads for this system: " << omp_get_max_threads() << std::endl;
+
+    //parse command line arguments
+    assert(argc == 2);
+    {
+        std::istringstream tmp(argv[1]);
+        tmp >> numthreads;
+    }
+    
+    assert(numthreads >= 1);
+    if(numthreads > (std::size_t)omp_get_max_threads())
+    {
+        std::cout << "Number of threads too high. Reduced to maximum number of threads! " << std::endl;
+        numthreads = omp_get_max_threads(); 
+    }
+
+    std::cout << "Benchmark started! Number of threads: " << numthreads << std::endl;
+    std::cout << std::endl;
+
+    omp_set_dynamic(0);     // Explicitly disable dynamic teams to have full control over amount of threads
+	omp_set_num_threads(numthreads); // Fixed amount of threads used for all consecutive parallel regions
+
+
+    PetersonsFilterLock filterlock(numthreads);
+    std::cout << "Testing correctness of Petersons Filter lock..." << std::endl;
+    testCorrectnes(filterlock);
+
+    LamportBakeryHerlihyLock herlihylock(numthreads); 
+    std::cout << "Testing correctness of Lamport Bakery Herlihy lock..." << std::endl;
+    testCorrectnes(herlihylock);
+
+    LamportBakeryOriginalLock lamportlock(numthreads);
+    std::cout << "Testing correctness of Lamport Bakery original lock..." << std::endl;
+    testCorrectnes(lamportlock);
+
+    PetersonsTree tournamentlock(numthreads);
+    std::cout << "Testing correctness of Petersons Tournament tree lock..." << std::endl;
+    testCorrectnes(tournamentlock);
+
+    //not working yet
+    //BoulangerieLock boulangerielock(numthreads);
+    //std::cout << "Testing correctness of Boulangerie lock..." << std::endl;
+    //testCorrectnes(boulangerielock);
+
+    
+
+    
+    return EXIT_SUCCESS;
 }
