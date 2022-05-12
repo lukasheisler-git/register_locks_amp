@@ -2,6 +2,8 @@
 #include <atomic>   
 #include <iostream>
 #include <vector>
+#include <mutex>
+#include <omp.h>
 
 class BoulangerieLock {
 private:
@@ -86,4 +88,24 @@ public:
     std::vector<PetersonsNode*> leaves;
     void lock(std::size_t tid);
     void unlock(std::size_t tid);
+};
+
+class C11Lock{
+private:
+  std::mutex m;
+
+public:
+  C11Lock(std::size_t num_threads);
+  void lock(std::size_t tid);
+  void unlock(std::size_t tid);
+};
+
+class OpenMPLock{
+private:
+  omp_lock_t o;
+
+public:
+  OpenMPLock(std::size_t num_threads);
+  void lock(std::size_t tid);
+  void unlock(std::size_t tid);
 };

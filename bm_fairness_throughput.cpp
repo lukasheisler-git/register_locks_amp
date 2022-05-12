@@ -18,10 +18,10 @@ std::vector<int> testFairnessThroughput(auto &lock, int timeframe){
 
     std::chrono::seconds sec(timeframe); //convert to nanoseconds
     int id;
-    int counter = 0, max = 0, min = 0;
+    int counter = 0, maxV = 0, minV = INT_MAX;
     bool _continue = true;  //variable to indicate when one second is over
 
-    #pragma omp parallel private(id) shared(lock, _continue) reduction(+:counter) reduction(max:max) reduction(min:min)
+    #pragma omp parallel private(id) shared(lock, _continue) reduction(min:minV) reduction(+:counter) reduction(max:maxV)
     {
         id = omp_get_thread_num();
         
@@ -46,13 +46,18 @@ std::vector<int> testFairnessThroughput(auto &lock, int timeframe){
                 lock.unlock(id);
                 counter++;
             }
+            minV = counter;
+            maxV = counter;
         }
-        max = counter;
-        //set min of thread 0 to large value to avoid reduction
-        min = (id == 0) ? INT_MAX : counter; 
+        #pragma omp critical
+        {
+            std::cout << id << ": " << minV << std::endl; 
+        }
+        
     }
-
-    std::vector<int> result = {counter, max, min};
+    std::cout << minV << std::endl;
+    std::cout << maxV << std::endl;
+    std::vector<int> result = {counter, maxV, minV};
     return result;
 }
 
@@ -60,7 +65,7 @@ void benchmark(auto &lock, int timeframe, int numthreads){
 
     std::cout << "Benchmark started for " << typeid(lock).name() << " ..." << std::endl; 
     numthreads -= 1; //Because thread 0 is just counting the time
-    std::string filename("results/fairness.csv");
+    std::string filename("results/fairness.txt");
     std::ofstream file_out;
 
     for(int i = 0; i < REPS; i++){
@@ -69,6 +74,7 @@ void benchmark(auto &lock, int timeframe, int numthreads){
         //save to file to plot results with python script
         file_out.open(filename, std::ios_base::app);
         file_out << typeid(lock).name() << ";" << std::to_string(numthreads) << ";" << std::to_string(timeframe) << ";" << std::to_string(tmp[0]) << ";" << std::to_string(tmp[1]) << ";" << std::to_string(tmp[2]) << std::endl;
+        file_out.close();
     }
 }
 
@@ -77,13 +83,13 @@ int main(int argc, char *argv[]) {
     //variables
     int numthreads;
     int timeframe;
-    
+    std::string lockname;
     
     std::cout << "Throughput benchmark started! Measure number of operations in given time slot." << std::endl;
     std::cout << "Maximum number of threads for this system: " << omp_get_max_threads() << std::endl;
 
     //parse command line arguments
-    assert(argc == 3);
+    assert(argc == 4);
     {
         std::istringstream tmp(argv[1]);
         tmp >> numthreads;
@@ -92,6 +98,10 @@ int main(int argc, char *argv[]) {
         std::istringstream tmp(argv[2]);
         tmp >> timeframe;
     }
+    {
+        std::istringstream tmp(argv[3]);
+        tmp >> lockname;
+    }
     
     assert(numthreads >= 1);
     if(numthreads > omp_get_max_threads())
@@ -99,19 +109,49 @@ int main(int argc, char *argv[]) {
         std::cout << "Number of threads too high. Reduced to maximum number of threads! " << std::endl;
         numthreads = omp_get_max_threads(); 
     }
-    
-    //possible choices for locks, uncomment only one
-    //PetersonsFilterLock lock(numthreads);
-    LamportBakeryHerlihyLock lock(numthreads);
-    //Bakery lock(numthreads); //not working yet...
-    //Filter lock(numthreads); //not working yet...
 
     std::cout << "Benchmark started! Number of threads: " << numthreads << " | Time frame: " << timeframe << " s" << std::endl;
      
     omp_set_dynamic(0);     // Explicitly disable dynamic teams to have full control over amount of threads
 	omp_set_num_threads(numthreads); // Fixed amount of threads used for all consecutive parallel regions
 
-    benchmark(lock, timeframe, numthreads);
+    //assign lock
+    if(lockname == "Filter"){
+        PetersonsFilterLock lock(numthreads);
+        benchmark(lock, timeframe, numthreads);
+    }
+    else if(lockname == "Herlihy"){
+        LamportBakeryHerlihyLock lock(numthreads);
+        benchmark(lock, timeframe, numthreads);
+    }
+    else if(lockname == "Lamport"){
+        LamportBakeryOriginalLock lock(numthreads);
+        benchmark(lock, timeframe, numthreads);
+    }
+    else if(lockname == "Tournament"){
+        PetersonsTree lock(numthreads);
+        benchmark(lock, timeframe, numthreads);
+    }
+    else if(lockname == "Boulangerie"){
+        BoulangerieLock lock(numthreads);
+        benchmark(lock, timeframe, numthreads);
+    }
+    else if(lockname == "C11"){
+        C11Lock lock(numthreads);
+        benchmark(lock, timeframe, numthreads);
+    }
+    else if(lockname == "OpenMP"){
+        OpenMPLock lock(numthreads);
+        benchmark(lock, timeframe, numthreads);
+    }
+    else{
+        std::cout << "Wrong command line argument: lock type not available!" << std::endl;
+        std::cout << "Choose from: [Filter | Lamport | Herlihy | Tournament | Boulangerie | C11 | OpenMP]" << std::endl;
+        return EXIT_FAILURE;
+    }
+
+
+    
     
     return EXIT_SUCCESS;
 }

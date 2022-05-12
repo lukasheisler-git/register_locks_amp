@@ -17,7 +17,7 @@ void BoulangerieLock::lock(std::size_t tid) {
     std::size_t limit;
 
     //take ticket
-    for (std::size_t j = 1; j < no_of_threads; j ++) {
+    for (std::size_t j = 0; j < no_of_threads; j ++) {
         if (label[j] > max) {
             max = label[j];
         }
@@ -38,8 +38,7 @@ void BoulangerieLock::lock(std::size_t tid) {
             continue;
         }
         else{
-            while(flag[j]){};
-            while (label[j] > 0 && ((label[j] < label[i]) ||( label[i] == label[j] && j < i))) {};
+            while ((flag[j] && (label[j] > 0) && ((label[j] < label[i]))) ||( label[i] == label[j] && j < i)) {};
         } 
     }
     
@@ -47,7 +46,7 @@ void BoulangerieLock::lock(std::size_t tid) {
 }
 
 void BoulangerieLock::unlock(std::size_t tid) {
-    label[tid] = 0;
+    flag[tid] = false;
     //std::cout << "Lock released by thread " << tid << std::endl;
 }
 
@@ -249,4 +248,28 @@ std::vector<PetersonsNode*> PetersonsTree::growTree(std::vector<PetersonsNode*> 
 
 bool PetersonsTree::validatePow2(std::size_t threads){
     return (threads & (threads-1)) == 0;
+}
+
+C11Lock::C11Lock(std::size_t num_threads){
+
+}
+
+void C11Lock::lock(std::size_t tid){
+    m.lock();
+}
+
+void C11Lock::unlock(std::size_t tid){
+    m.unlock();
+}
+
+OpenMPLock::OpenMPLock(std::size_t num_threads){
+    omp_init_lock(&o);
+}
+
+void OpenMPLock::lock(std::size_t tid){
+    omp_set_lock(&o);
+}
+
+void OpenMPLock::unlock(std::size_t tid){
+    omp_unset_lock(&o);
 }

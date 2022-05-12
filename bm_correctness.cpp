@@ -100,10 +100,17 @@ int main(int argc, char *argv[]) {
     std::cout << "Testing correctness of Petersons Tournament tree lock..." << std::endl;
     testCorrectnes(tournamentlock);
 
-    //not working yet
-    //BoulangerieLock boulangerielock(numthreads);
-    //std::cout << "Testing correctness of Boulangerie lock..." << std::endl;
-    //testCorrectnes(boulangerielock);
+    BoulangerieLock boulangerielock(numthreads);
+    std::cout << "Testing correctness of Boulangerie lock..." << std::endl;
+    testCorrectnes(boulangerielock);
+
+    C11Lock c11lock(numthreads);
+    std::cout << "Testing correctness of C11 mutex lock..." << std::endl;
+    testCorrectnes(c11lock);
+
+    OpenMPLock openmplock(numthreads);
+    std::cout << "Testing correctness of OpenMP lock..." << std::endl;
+    testCorrectnes(openmplock);
     
     return EXIT_SUCCESS;
 }

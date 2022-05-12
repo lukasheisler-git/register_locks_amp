@@ -1,6 +1,6 @@
 SOURCES = locks.cpp
 CXX=g++
-CXXFLAGS := $(CXXFLAGS) -std=c++14 -Wall -pedantic -O3 -ffast-math -fconcepts -march=native   -fopenmp
+CXXFLAGS := $(CXXFLAGS) -std=c++14 -fopenmp -Wall -pedantic -march=native -fconcepts -O3 
 
 all: correctness
 
