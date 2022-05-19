@@ -10,8 +10,8 @@ throughput:
 correctness:
 	$(CXX) $(CXXFLAGS) -o bm_correctness bm_correctness.cpp $(SOURCES)
 	
-#latency:
-#	$(CXX) $(CXXFLAGS) -o bm_latency bm_latency.cpp $(SOURCES)
+latency:
+	$(CXX) $(CXXFLAGS) -o bm_latency bm_latency.cpp $(SOURCES)
 
 .PHONY: clean
 clean:
