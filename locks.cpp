@@ -57,20 +57,24 @@ void BoulangerieLock::unlock(std::size_t tid) {
 }
 
 
-LamportBakeryHerlihyLock::LamportBakeryHerlihyLock(std::size_t num_threads) {
-    no_of_threads = num_threads;
-    flag = new std::atomic_bool[no_of_threads];
-    label = new std::atomic_size_t[no_of_threads];
+LamportBakeryHerlihyLock::LamportBakeryHerlihyLock(std::size_t num_threads) : no_of_threads(num_threads){
+    flag = new bool[no_of_threads];
+    label = new LLint[no_of_threads];
     for(std::size_t i=0; i<no_of_threads; i++){
         flag[i] = false;
         label[i] = 0;
     }
 }
 
+LamportBakeryHerlihyLock::~LamportBakeryHerlihyLock(){
+    delete [] flag;
+    delete [] label;
+}
+
 void LamportBakeryHerlihyLock::lock(std::size_t tid) {
     std::size_t i = tid;
     flag[i] = true;
-    std::size_t max = label[0];
+    LLint max = label[0];
 
     //take ticket
     for (std::size_t j = 1; j < no_of_threads; j ++) {
@@ -99,10 +103,9 @@ void LamportBakeryHerlihyLock::unlock(std::size_t tid) {
 }
 
 
-LamportBakeryOriginalLock::LamportBakeryOriginalLock(std::size_t num_threads) {
-    no_of_threads = num_threads;
-    flag = new std::atomic_bool[no_of_threads];
-    label = new std::atomic_size_t[no_of_threads];
+LamportBakeryOriginalLock::LamportBakeryOriginalLock(std::size_t num_threads) : no_of_threads(num_threads){
+    flag = new bool[no_of_threads];
+    label = new LLint[no_of_threads];
     for(std::size_t i=0; i<no_of_threads; i++){
         flag[i] = false;
         label[i] = 0;
@@ -112,7 +115,7 @@ LamportBakeryOriginalLock::LamportBakeryOriginalLock(std::size_t num_threads) {
 void LamportBakeryOriginalLock::lock(std::size_t tid) {
     std::size_t i = tid;
     flag[i] = true;
-    std::size_t max = label[0];
+    LLint max = label[0];
 
     //take ticket
     for (std::size_t j = 1; j < no_of_threads; j ++) {
@@ -142,13 +145,17 @@ void LamportBakeryOriginalLock::unlock(std::size_t tid) {
 }
 
 
-PetersonsFilterLock::PetersonsFilterLock(std::size_t num_threads) {
-  no_of_threads = num_threads;
-  level = new std::atomic_size_t[no_of_threads];
-  victim = new std::atomic_size_t[no_of_threads];
+PetersonsFilterLock::PetersonsFilterLock(std::size_t num_threads) : no_of_threads(num_threads){
+  level = new LLint[no_of_threads];
+  victim = new LLint[no_of_threads];
   for(std::size_t i=0; i<no_of_threads; i++){
     level[i] = 0;
   }
+}
+
+PetersonsFilterLock::~PetersonsFilterLock(){
+    delete [] level;
+    delete [] victim;
 }
 
 void PetersonsFilterLock::lock(std::size_t tid) {
@@ -168,13 +175,16 @@ void PetersonsFilterLock::unlock(std::size_t tid) {
 }
 
 
-PetersonsNode::PetersonsNode(PetersonsNode *par, std::size_t num_threads) {
-    no_of_threads = num_threads;
+PetersonsNode::PetersonsNode(PetersonsNode *par, std::size_t num_threads) : no_of_threads(num_threads){
     parent = par; 
-    flags = new std::atomic_bool[no_of_threads];
+    flags = new bool[no_of_threads];
     for(std::size_t i=0; i<no_of_threads; i++){
         flags[i] = false;
     }
+}
+
+PetersonsNode::~PetersonsNode(){
+    delete [] flags;
 }
 
 void PetersonsNode::lock(std::size_t tid) {
@@ -203,10 +213,9 @@ bool PetersonsNode::isAnotherFlag(std::size_t tid) {
     return false;
 }
 
-PetersonsTree::PetersonsTree(std::size_t num_threads){
-    if(validatePow2(num_threads))
+PetersonsTree::PetersonsTree(std::size_t num_threads) : no_of_threads(num_threads){
+    if(validatePow2(no_of_threads))
     {
-        no_of_threads = num_threads;
         root = new PetersonsNode(nullptr, no_of_threads);
         std::vector<PetersonsNode*> initList;
         initList.push_back(root);
@@ -215,6 +224,10 @@ PetersonsTree::PetersonsTree(std::size_t num_threads){
     else{
         throw std::invalid_argument("Number of threads must be power of 2");
     }
+}
+
+PetersonsTree::~PetersonsTree(){
+    leaves.clear();
 }
 
 void PetersonsTree::lock(std::size_t tid){

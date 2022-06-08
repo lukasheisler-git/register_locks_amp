@@ -2,7 +2,7 @@ SOURCES = locks.cpp
 CXX=g++
 CXXFLAGS := $(CXXFLAGS) -std=c++14 -fopenmp -Wall -pedantic -march=native -fconcepts -O3 
 
-all: correctness
+all: correctness throughput latency
 
 throughput:
 	$(CXX) $(CXXFLAGS) -o bm_fairness_throughput bm_fairness_throughput.cpp $(SOURCES) 
