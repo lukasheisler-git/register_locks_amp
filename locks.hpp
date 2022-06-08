@@ -118,3 +118,35 @@ public:
   void lock(std::size_t tid);
   void unlock(std::size_t tid);
 };
+
+
+class TestAndSetLock {
+    private:
+        std::atomic<bool> lock_ = {false};
+
+    public:
+        // ~test_set_Lock();
+        TestAndSetLock(std::size_t num_threads);
+        void lock(std::size_t tid);
+        void unlock(std::size_t tid);
+};
+
+// TestAndSetLock::~TestAndSetLock() {
+//     lock_ = {false};
+// }
+
+
+class TestAndTestAndSetLock {
+    private:
+        std::atomic<bool> lock_ = {false};
+
+    public:
+        // ~TestAndTestAndSetLock();
+        TestAndTestAndSetLock(std::size_t num_threads);
+        void lock(std::size_t tid);
+        void unlock(std::size_t tid);
+};
+
+// TestAndTestAndSetLock::~TestAndTestAndSetLock() {
+//     lock_ = {false};
+// }

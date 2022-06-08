@@ -144,11 +144,20 @@ int main(int argc, char *argv[]) {
         OpenMPLock lock(numthreads);
         benchmark(lock, timeframe, numthreads);
     }
+    else if(lockname == "TestAndSet"){
+        TestAndSetLock lock(numthreads);
+        benchmark(lock, timeframe, numthreads);
+    }
+    else if(lockname == "TestAndTestAndSet"){
+        TestAndTestAndSetLock lock(numthreads);
+        benchmark(lock, timeframe, numthreads);
+    }
     else{
         std::cout << "Wrong command line argument: lock type not available!" << std::endl;
-        std::cout << "Choose from: [Filter | Lamport | Herlihy | Tournament | Boulangerie | C11 | OpenMP]" << std::endl;
+        std::cout << "Choose from: [Filter | Lamport | Herlihy | Tournament | Boulangerie | C11 | OpenMP | TestAndSet | TestAndTestAndSet]" << std::endl;
         return EXIT_FAILURE;
     }
+
 
 
     

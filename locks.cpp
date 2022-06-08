@@ -292,3 +292,36 @@ void OpenMPLock::lock(std::size_t tid){
 void OpenMPLock::unlock(std::size_t tid){
     omp_unset_lock(&o);
 }
+
+
+
+TestAndSetLock::TestAndSetLock(std::size_t num_threads){}
+
+void TestAndSetLock::lock(std::size_t tid) 
+{
+  while(lock_.exchange(true, std::memory_order_acquire));
+}
+
+void TestAndSetLock::unlock(std::size_t tid) 
+{
+  lock_.store(false, std::memory_order_release);
+}
+
+TestAndTestAndSetLock::TestAndTestAndSetLock(std::size_t num_threads){}
+
+void TestAndTestAndSetLock::lock(std::size_t tid) 
+{
+  for (;;) 
+  {
+    if (!lock_.exchange(true, std::memory_order_acquire)) {
+      break;
+    }
+    while (lock_.load(std::memory_order_relaxed));
+  }
+}
+
+void TestAndTestAndSetLock::unlock(std::size_t tid) 
+{
+  //lock_.store(false);
+  lock_.store(false, std::memory_order_release);
+}

@@ -111,6 +111,14 @@ int main(int argc, char *argv[]) {
     OpenMPLock openmplock(numthreads);
     std::cout << "Testing correctness of OpenMP lock..." << std::endl;
     testCorrectnes(openmplock);
+
+    TestAndSetLock tsLock(numthreads);
+    std::cout << "Testing correctness of test and set lock..." << std::endl;
+    testCorrectnes(tsLock);
+
+    TestAndTestAndSetLock ttsLock(numthreads);
+    std::cout << "Testing correctness of test and test and set lock..." << std::endl;
+    testCorrectnes(ttsLock);
     
     return EXIT_SUCCESS;
 }
