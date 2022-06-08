@@ -11,22 +11,22 @@ using LLint = long long int;
 class BoulangerieLock {
 private:
   const std::size_t no_of_threads;
-  volatile LLint *number;
-  volatile bool *choosing;
+  std::atomic_size_t *number;
+  std::atomic_bool *choosing;
 
 public:
   BoulangerieLock(std::size_t num_threads);
   ~BoulangerieLock();
   void lock(std::size_t tid);
   void unlock(std::size_t tid);
-  bool check(LLint a, LLint b, LLint c, LLint d);
+  bool check(std::size_t a, std::size_t b, std::size_t c, std::size_t d);
 };
 
 class LamportBakeryHerlihyLock {
 private:
   const std::size_t no_of_threads;
-  volatile bool *flag;
-  volatile LLint *label;
+  std::atomic_bool *flag;
+  std::atomic_size_t *label;
 
 public:
   LamportBakeryHerlihyLock(std::size_t num_threads);
@@ -38,8 +38,8 @@ public:
 class LamportBakeryOriginalLock {
 private:
   const std::size_t no_of_threads;
-  volatile bool *flag;
-  volatile LLint *label;
+  std::atomic_bool *flag;
+  std::atomic_size_t *label;
 
 public:
   LamportBakeryOriginalLock(std::size_t num_threads);
@@ -50,8 +50,8 @@ public:
 class PetersonsFilterLock {
 private:
   const std::size_t no_of_threads;
-  volatile LLint *level;
-  volatile LLint *victim;
+  std::atomic_size_t *level;
+  std::atomic_size_t *victim;
 
 public:
   PetersonsFilterLock(std::size_t num_threads);
@@ -64,7 +64,7 @@ public:
 class PetersonsNode {
 private:
   const std::size_t no_of_threads;
-  volatile bool *flags;
+  std::atomic_bool *flags;
   std::atomic_size_t victim;
 
 public:

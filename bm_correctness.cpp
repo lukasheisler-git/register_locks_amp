@@ -18,7 +18,7 @@ void testCorrectnes(auto &lock){
     #pragma omp parallel private(id) shared(lock, control) 
     {
         id = omp_get_thread_num();
-        for(std::size_t i = 0; i < 500; i++)
+        for(std::size_t i = 0; i < 1500; i++)
         {
             lock.lock(id);
             //critical section

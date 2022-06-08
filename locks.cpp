@@ -1,8 +1,8 @@
 #include "locks.hpp"
 
 BoulangerieLock::BoulangerieLock(std::size_t num_threads) : no_of_threads(num_threads){
-    number = new LLint[no_of_threads];
-    choosing = new bool[no_of_threads];
+    number = new std::atomic_size_t[no_of_threads];
+    choosing = new std::atomic_bool[no_of_threads];
     std::fill(number, number + no_of_threads, 0);
     std::fill(choosing, choosing + no_of_threads, false);
 }
@@ -12,7 +12,7 @@ BoulangerieLock::~BoulangerieLock(){
     delete [] choosing; 
 }
 
-bool BoulangerieLock::check(LLint a, LLint b, LLint c, LLint d){
+bool BoulangerieLock::check(std::size_t a, std::size_t b, std::size_t c, std::size_t d){
     return ((a < c) || (a == c && b < d));
 }
 
@@ -20,8 +20,8 @@ void BoulangerieLock::lock(std::size_t tid) {
     std::size_t i = tid;
     std::size_t Limit = no_of_threads;
     bool tmp_c = false;
-    LLint prev_n(-1), tmp_n(-1);
-    std::vector<LLint> num(no_of_threads,0);
+    std::size_t prev_n(-1), tmp_n(-1);
+    std::vector<std::size_t> num(no_of_threads,0);
 
     choosing[i] = true;
     for(std::size_t j = 0; j < no_of_threads; j++){
@@ -58,8 +58,8 @@ void BoulangerieLock::unlock(std::size_t tid) {
 
 
 LamportBakeryHerlihyLock::LamportBakeryHerlihyLock(std::size_t num_threads) : no_of_threads(num_threads){
-    flag = new bool[no_of_threads];
-    label = new LLint[no_of_threads];
+    flag = new std::atomic_bool[no_of_threads];
+    label = new std::atomic_size_t[no_of_threads];
     for(std::size_t i=0; i<no_of_threads; i++){
         flag[i] = false;
         label[i] = 0;
@@ -74,7 +74,7 @@ LamportBakeryHerlihyLock::~LamportBakeryHerlihyLock(){
 void LamportBakeryHerlihyLock::lock(std::size_t tid) {
     std::size_t i = tid;
     flag[i] = true;
-    LLint max = label[0];
+    std::size_t max = label[0];
 
     //take ticket
     for (std::size_t j = 1; j < no_of_threads; j ++) {
@@ -104,8 +104,8 @@ void LamportBakeryHerlihyLock::unlock(std::size_t tid) {
 
 
 LamportBakeryOriginalLock::LamportBakeryOriginalLock(std::size_t num_threads) : no_of_threads(num_threads){
-    flag = new bool[no_of_threads];
-    label = new LLint[no_of_threads];
+    flag = new std::atomic_bool[no_of_threads];
+    label = new std::atomic_size_t[no_of_threads];
     for(std::size_t i=0; i<no_of_threads; i++){
         flag[i] = false;
         label[i] = 0;
@@ -115,7 +115,7 @@ LamportBakeryOriginalLock::LamportBakeryOriginalLock(std::size_t num_threads) : 
 void LamportBakeryOriginalLock::lock(std::size_t tid) {
     std::size_t i = tid;
     flag[i] = true;
-    LLint max = label[0];
+    std::size_t max = label[0];
 
     //take ticket
     for (std::size_t j = 1; j < no_of_threads; j ++) {
@@ -146,10 +146,11 @@ void LamportBakeryOriginalLock::unlock(std::size_t tid) {
 
 
 PetersonsFilterLock::PetersonsFilterLock(std::size_t num_threads) : no_of_threads(num_threads){
-  level = new LLint[no_of_threads];
-  victim = new LLint[no_of_threads];
+  level = new std::atomic_size_t[no_of_threads];
+  victim = new std::atomic_size_t[no_of_threads];
   for(std::size_t i=0; i<no_of_threads; i++){
     level[i] = 0;
+    victim[i] = false;
   }
 }
 
@@ -177,7 +178,7 @@ void PetersonsFilterLock::unlock(std::size_t tid) {
 
 PetersonsNode::PetersonsNode(PetersonsNode *par, std::size_t num_threads) : no_of_threads(num_threads){
     parent = par; 
-    flags = new bool[no_of_threads];
+    flags = new std::atomic_bool[no_of_threads];
     for(std::size_t i=0; i<no_of_threads; i++){
         flags[i] = false;
     }
