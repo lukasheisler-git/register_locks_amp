@@ -4,17 +4,22 @@
 #include <vector>
 #include <mutex>
 #include <omp.h>
+#include <algorithm>
+
+using LLint = long long int;
 
 class BoulangerieLock {
 private:
-  std::atomic_size_t no_of_threads;
-  std::atomic_bool *flag;
-  std::atomic_size_t *label;
+  const std::size_t no_of_threads;
+  volatile LLint *number;
+  volatile bool *choosing;
 
 public:
   BoulangerieLock(std::size_t num_threads);
+  ~BoulangerieLock();
   void lock(std::size_t tid);
   void unlock(std::size_t tid);
+  bool check(LLint a, LLint b, LLint c, LLint d);
 };
 
 class LamportBakeryHerlihyLock {

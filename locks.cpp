@@ -1,52 +1,58 @@
 #include "locks.hpp"
 
-BoulangerieLock::BoulangerieLock(std::size_t num_threads) {
-    no_of_threads = num_threads;
-    flag = new std::atomic_bool[no_of_threads];
-    label = new std::atomic_size_t[no_of_threads];
-    for(std::size_t i=0; i<no_of_threads; i++){
-        flag[i] = false;
-        label[i] = 0;
-    }
+BoulangerieLock::BoulangerieLock(std::size_t num_threads) : no_of_threads(num_threads){
+    number = new LLint[no_of_threads];
+    choosing = new bool[no_of_threads];
+    std::fill(number, number + no_of_threads, 0);
+    std::fill(choosing, choosing + no_of_threads, false);
+}
+
+BoulangerieLock::~BoulangerieLock(){
+    delete [] number;
+    delete [] choosing; 
+}
+
+bool BoulangerieLock::check(LLint a, LLint b, LLint c, LLint d){
+    return ((a < c) || (a == c && b < d));
 }
 
 void BoulangerieLock::lock(std::size_t tid) {
     std::size_t i = tid;
-    flag[i] = true;
-    std::size_t max = label[0];
-    std::size_t limit;
+    std::size_t Limit = no_of_threads;
+    bool tmp_c = false;
+    LLint prev_n(-1), tmp_n(-1);
+    std::vector<LLint> num(no_of_threads,0);
+
+    choosing[i] = true;
+    for(std::size_t j = 0; j < no_of_threads; j++){
+        if(j != i) num[j] = number[j];
+    }
+
+    num[i] = 1 + *std::max_element(num.begin(), num.end());
+    number[i] = num[i];
+    choosing[i] = false;
+
+    if(number[i] == 1) Limit = i;
 
     //take ticket
-    for (std::size_t j = 0; j < no_of_threads; j ++) {
-        if (label[j] > max) {
-            max = label[j];
-        }
-    }
-    label[i] = max + 1;
+    for (std::size_t j = 0; j < Limit; j ++) {
+        if (j != i) {
+            do{
+                tmp_c = choosing[j];
+            }while(tmp_c == true);
 
-    if(label[i] == 1)
-    {
-        limit = i - 1;
-    }
-    else
-    {
-        limit = no_of_threads;
-    }
-    //wait till smallest
-    for (size_t j = 0; j < limit; j++) {
-        if (i == j) {
-            continue;
+            tmp_n = -1;
+
+            do{
+                prev_n = tmp_n;
+                tmp_n = number[j];
+            }while((tmp_n != 0) && !check(num[i],i,tmp_n,j) && !(tmp_n != prev_n && prev_n != -1));
         }
-        else{
-            while ((flag[j] && (label[j] > 0) && ((label[j] < label[i]))) ||( label[i] == label[j] && j < i)) {};
-        } 
     }
-    
-    //std::cout << "Lock obtained by thread " << tid << std::endl;
 }
 
 void BoulangerieLock::unlock(std::size_t tid) {
-    flag[tid] = false;
+    number[tid] = 0;
     //std::cout << "Lock released by thread " << tid << std::endl;
 }
 
