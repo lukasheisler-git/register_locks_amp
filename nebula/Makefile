@@ -1,5 +1,5 @@
 SOURCES = locks.cpp
-CXX=gcc
+CXX=g++
 CXXFLAGS := $(CXXFLAGS) -std=c++14 -fopenmp -Wall -pedantic -march=native -fconcepts -O3 
 
 all: correctness throughput latency

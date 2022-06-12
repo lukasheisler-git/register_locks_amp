@@ -1,0 +1,306 @@
+Throughput benchmark started! Measure number of operations in given time slot.
+Maximum number of threads for this system: 33
+Benchmark started! Number of threads: 33 | Time frame: 1 s
+Benchmark started for 19PetersonsFilterLock ...
+19PetersonsFilterLock;33;1;76736;2510;2249
+19PetersonsFilterLock;33;1;73394;2312;2250
+19PetersonsFilterLock;33;1;73434;2314;2256
+19PetersonsFilterLock;33;1;73460;2315;2251
+19PetersonsFilterLock;33;1;73741;2325;2285
+19PetersonsFilterLock;33;1;73707;2321;2286
+19PetersonsFilterLock;33;1;73631;2318;2281
+19PetersonsFilterLock;33;1;73686;2319;2285
+19PetersonsFilterLock;33;1;72685;2290;2238
+19PetersonsFilterLock;33;1;72729;2294;2242
+19PetersonsFilterLock;33;1;72791;2292;2244
+19PetersonsFilterLock;33;1;72791;2295;2241
+19PetersonsFilterLock;33;1;72790;2294;2245
+19PetersonsFilterLock;33;1;72989;2299;2255
+19PetersonsFilterLock;33;1;73074;2302;2255
+19PetersonsFilterLock;33;1;73066;2302;2254
+19PetersonsFilterLock;33;1;73012;2301;2253
+19PetersonsFilterLock;33;1;73039;2301;2256
+19PetersonsFilterLock;33;1;72998;2301;2259
+19PetersonsFilterLock;33;1;73040;2303;2256
+19PetersonsFilterLock;33;1;73011;2301;2256
+19PetersonsFilterLock;33;1;73074;2303;2257
+19PetersonsFilterLock;33;1;73033;2301;2254
+19PetersonsFilterLock;33;1;73019;2300;2256
+19PetersonsFilterLock;33;1;73070;2302;2254
+19PetersonsFilterLock;33;1;73075;2302;2258
+19PetersonsFilterLock;33;1;73018;2301;2254
+19PetersonsFilterLock;33;1;72977;2301;2257
+19PetersonsFilterLock;33;1;73057;2302;2254
+19PetersonsFilterLock;33;1;73019;2301;2255
+Throughput benchmark started! Measure number of operations in given time slot.
+Maximum number of threads for this system: 33
+Benchmark started! Number of threads: 33 | Time frame: 1 s
+Benchmark started for 24LamportBakeryHerlihyLock ...
+24LamportBakeryHerlihyLock;33;1;528828;16545;16061
+24LamportBakeryHerlihyLock;33;1;511667;16016;15424
+24LamportBakeryHerlihyLock;33;1;543149;16987;16561
+24LamportBakeryHerlihyLock;33;1;536961;16799;16201
+24LamportBakeryHerlihyLock;33;1;536509;16786;16163
+24LamportBakeryHerlihyLock;33;1;580300;18162;17332
+24LamportBakeryHerlihyLock;33;1;538947;16859;16334
+24LamportBakeryHerlihyLock;33;1;570900;17867;17047
+24LamportBakeryHerlihyLock;33;1;570526;17848;17239
+24LamportBakeryHerlihyLock;33;1;555817;17387;16834
+24LamportBakeryHerlihyLock;33;1;552412;17287;16522
+24LamportBakeryHerlihyLock;33;1;575985;18014;17589
+24LamportBakeryHerlihyLock;33;1;574713;17962;17895
+24LamportBakeryHerlihyLock;33;1;588956;18427;17747
+24LamportBakeryHerlihyLock;33;1;578928;18097;17942
+24LamportBakeryHerlihyLock;33;1;581478;18184;17802
+24LamportBakeryHerlihyLock;33;1;573412;17939;17317
+24LamportBakeryHerlihyLock;33;1;586480;18345;17808
+24LamportBakeryHerlihyLock;33;1;606328;18966;18400
+24LamportBakeryHerlihyLock;33;1;564330;17643;17403
+24LamportBakeryHerlihyLock;33;1;594141;18587;17997
+24LamportBakeryHerlihyLock;33;1;569339;17815;17085
+24LamportBakeryHerlihyLock;33;1;559412;17488;17291
+24LamportBakeryHerlihyLock;33;1;604845;18913;18555
+24LamportBakeryHerlihyLock;33;1;570445;17854;16989
+24LamportBakeryHerlihyLock;33;1;595547;18637;17818
+24LamportBakeryHerlihyLock;33;1;584821;18302;17484
+24LamportBakeryHerlihyLock;33;1;560742;17544;16881
+24LamportBakeryHerlihyLock;33;1;565342;17686;17080
+24LamportBakeryHerlihyLock;33;1;547963;17147;16410
+Throughput benchmark started! Measure number of operations in given time slot.
+Maximum number of threads for this system: 33
+Benchmark started! Number of threads: 33 | Time frame: 1 s
+Benchmark started for 25LamportBakeryOriginalLock ...
+25LamportBakeryOriginalLock;33;1;409463;12810;12471
+25LamportBakeryOriginalLock;33;1;461830;14440;14206
+25LamportBakeryOriginalLock;33;1;434778;13601;13367
+25LamportBakeryOriginalLock;33;1;461715;14439;14120
+25LamportBakeryOriginalLock;33;1;441751;13806;13775
+25LamportBakeryOriginalLock;33;1;463032;14480;14189
+25LamportBakeryOriginalLock;33;1;437995;13692;13555
+25LamportBakeryOriginalLock;33;1;451417;14118;13764
+25LamportBakeryOriginalLock;33;1;460883;14406;14308
+25LamportBakeryOriginalLock;33;1;453135;14164;14063
+25LamportBakeryOriginalLock;33;1;463061;14476;14370
+25LamportBakeryOriginalLock;33;1;457256;14301;13949
+25LamportBakeryOriginalLock;33;1;445002;13914;13694
+25LamportBakeryOriginalLock;33;1;440227;13769;13412
+25LamportBakeryOriginalLock;33;1;453802;14193;13847
+25LamportBakeryOriginalLock;33;1;444731;13913;13452
+25LamportBakeryOriginalLock;33;1;449271;14050;13744
+25LamportBakeryOriginalLock;33;1;433557;13565;13064
+25LamportBakeryOriginalLock;33;1;452159;14148;13602
+25LamportBakeryOriginalLock;33;1;465360;14561;13980
+25LamportBakeryOriginalLock;33;1;441136;13798;13424
+25LamportBakeryOriginalLock;33;1;483397;15128;14468
+25LamportBakeryOriginalLock;33;1;450904;14104;13690
+25LamportBakeryOriginalLock;33;1;451163;14113;13691
+25LamportBakeryOriginalLock;33;1;451325;14117;13737
+25LamportBakeryOriginalLock;33;1;435848;13628;13403
+25LamportBakeryOriginalLock;33;1;443619;13878;13471
+25LamportBakeryOriginalLock;33;1;449407;14060;13565
+25LamportBakeryOriginalLock;33;1;442833;13852;13434
+25LamportBakeryOriginalLock;33;1;446924;13979;13581
+Throughput benchmark started! Measure number of operations in given time slot.
+Maximum number of threads for this system: 33
+Benchmark started! Number of threads: 33 | Time frame: 1 s
+Benchmark started for 13PetersonsTree ...
+13PetersonsTree;33;1;206140150;205882425;7530
+13PetersonsTree;33;1;207011265;206759547;7865
+13PetersonsTree;33;1;212005444;211757257;7755
+13PetersonsTree;33;1;212005757;211757387;7761
+13PetersonsTree;33;1;212001137;211747273;7927
+13PetersonsTree;33;1;211997464;211746687;7836
+13PetersonsTree;33;1;212009433;211760756;7771
+13PetersonsTree;33;1;212025074;211774183;7840
+13PetersonsTree;33;1;212015648;211771477;7630
+13PetersonsTree;33;1;211997997;211749486;7760
+13PetersonsTree;33;1;212018267;211768094;7817
+13PetersonsTree;33;1;212011411;211758400;7906
+13PetersonsTree;33;1;212004183;211755623;7767
+13PetersonsTree;33;1;212001849;211758912;7591
+13PetersonsTree;33;1;212013061;211767629;7669
+13PetersonsTree;33;1;212008069;211760128;7747
+13PetersonsTree;33;1;211998644;211749363;7789
+13PetersonsTree;33;1;211997118;211742331;7961
+13PetersonsTree;33;1;211995469;211742188;7908
+13PetersonsTree;33;1;212011692;211759665;7875
+13PetersonsTree;33;1;212020293;211774794;7671
+13PetersonsTree;33;1;212008021;211759329;7771
+13PetersonsTree;33;1;212018782;211775408;7605
+13PetersonsTree;33;1;212032588;211783437;7785
+13PetersonsTree;33;1;212032440;211783462;7779
+13PetersonsTree;33;1;212019491;211771464;7750
+13PetersonsTree;33;1;212023929;211776179;7742
+13PetersonsTree;33;1;212030061;211776146;7934
+13PetersonsTree;33;1;212009941;211759239;7833
+13PetersonsTree;33;1;212020731;211773291;7732
+Throughput benchmark started! Measure number of operations in given time slot.
+Maximum number of threads for this system: 33
+Benchmark started! Number of threads: 33 | Time frame: 1 s
+Benchmark started for 15BoulangerieLock ...
+15BoulangerieLock;33;1;492883;16036;15210
+15BoulangerieLock;33;1;511646;16027;15045
+15BoulangerieLock;33;1;500245;15669;14703
+15BoulangerieLock;33;1;500703;15684;14713
+15BoulangerieLock;33;1;503923;15784;14796
+15BoulangerieLock;33;1;498765;15620;14673
+15BoulangerieLock;33;1;502141;15728;14756
+15BoulangerieLock;33;1;500813;15687;14704
+15BoulangerieLock;33;1;502968;15752;14783
+15BoulangerieLock;33;1;509943;15973;14978
+15BoulangerieLock;33;1;502914;15753;14763
+15BoulangerieLock;33;1;502450;15738;14749
+15BoulangerieLock;33;1;504956;15816;14835
+15BoulangerieLock;33;1;505311;15827;14841
+15BoulangerieLock;33;1;506884;15877;14882
+15BoulangerieLock;33;1;503820;15782;14801
+15BoulangerieLock;33;1;502937;15752;14772
+15BoulangerieLock;33;1;514030;16100;15093
+15BoulangerieLock;33;1;522550;16367;15340
+15BoulangerieLock;33;1;517700;16215;15216
+15BoulangerieLock;33;1;514106;16101;15123
+15BoulangerieLock;33;1;519397;16268;15260
+15BoulangerieLock;33;1;523584;16401;15365
+15BoulangerieLock;33;1;522947;16380;15343
+15BoulangerieLock;33;1;515121;16134;15118
+15BoulangerieLock;33;1;511729;16028;15051
+15BoulangerieLock;33;1;507801;15905;14938
+15BoulangerieLock;33;1;518817;16250;15244
+15BoulangerieLock;33;1;517524;16213;15193
+15BoulangerieLock;33;1;525386;16458;15393
+Throughput benchmark started! Measure number of operations in given time slot.
+Maximum number of threads for this system: 33
+Benchmark started! Number of threads: 33 | Time frame: 1 s
+Benchmark started for 7C11Lock ...
+7C11Lock;33;1;14724248;622293;322809
+7C11Lock;33;1;14184284;555163;322641
+7C11Lock;33;1;14089358;553305;325124
+7C11Lock;33;1;14094319;560349;324048
+7C11Lock;33;1;14111970;546865;319883
+7C11Lock;33;1;14010795;548189;326369
+7C11Lock;33;1;13974403;547088;320684
+7C11Lock;33;1;13992544;536665;316910
+7C11Lock;33;1;14129002;551566;324672
+7C11Lock;33;1;14036051;558244;319050
+7C11Lock;33;1;14000445;556307;312293
+7C11Lock;33;1;13998050;557248;318596
+7C11Lock;33;1;13996302;554624;319584
+7C11Lock;33;1;14000677;547957;323585
+7C11Lock;33;1;13992465;547345;317640
+7C11Lock;33;1;13960325;553425;317229
+7C11Lock;33;1;13984401;551657;317929
+7C11Lock;33;1;14010446;557929;315831
+7C11Lock;33;1;14201360;601178;328509
+7C11Lock;33;1;14050584;549316;320033
+7C11Lock;33;1;14032040;550574;322696
+7C11Lock;33;1;14034428;552201;322399
+7C11Lock;33;1;13984126;549546;321601
+7C11Lock;33;1;14023983;549933;323687
+7C11Lock;33;1;14046138;552371;322645
+7C11Lock;33;1;14030140;555270;321502
+7C11Lock;33;1;13996661;547570;324096
+7C11Lock;33;1;14007492;552090;324762
+7C11Lock;33;1;14020221;549938;323313
+7C11Lock;33;1;14046217;547560;322060
+Throughput benchmark started! Measure number of operations in given time slot.
+Maximum number of threads for this system: 33
+Benchmark started! Number of threads: 33 | Time frame: 1 s
+Benchmark started for 10OpenMPLock ...
+10OpenMPLock;33;1;1641537;180172;8426
+10OpenMPLock;33;1;1873941;165697;14423
+10OpenMPLock;33;1;2167729;201587;25250
+10OpenMPLock;33;1;2076137;211283;23156
+10OpenMPLock;33;1;2268416;194607;21548
+10OpenMPLock;33;1;2237649;203643;22143
+10OpenMPLock;33;1;2234211;206460;25704
+10OpenMPLock;33;1;2250553;203226;23414
+10OpenMPLock;33;1;2258319;199322;23917
+10OpenMPLock;33;1;2098130;224170;25966
+10OpenMPLock;33;1;2092441;220976;26695
+10OpenMPLock;33;1;2075094;225319;21219
+10OpenMPLock;33;1;2003754;220613;22463
+10OpenMPLock;33;1;2132401;202249;21751
+10OpenMPLock;33;1;2074933;206873;21823
+10OpenMPLock;33;1;1985326;220977;21354
+10OpenMPLock;33;1;1983372;218046;25116
+10OpenMPLock;33;1;1964296;220041;24128
+10OpenMPLock;33;1;1985858;217656;24223
+10OpenMPLock;33;1;1976532;219031;22891
+10OpenMPLock;33;1;1979856;220894;22637
+10OpenMPLock;33;1;1977937;221634;22294
+10OpenMPLock;33;1;1985185;221307;21913
+10OpenMPLock;33;1;1992565;219699;23563
+10OpenMPLock;33;1;1999961;218516;25851
+10OpenMPLock;33;1;2001050;218987;26396
+10OpenMPLock;33;1;2018784;217202;26528
+10OpenMPLock;33;1;2009000;217688;27511
+10OpenMPLock;33;1;2008743;216785;26398
+10OpenMPLock;33;1;2006502;215442;27180
+Throughput benchmark started! Measure number of operations in given time slot.
+Maximum number of threads for this system: 33
+Benchmark started! Number of threads: 33 | Time frame: 1 s
+Benchmark started for 14TestAndSetLock ...
+14TestAndSetLock;33;1;379017;122734;396
+14TestAndSetLock;33;1;329279;87290;72
+14TestAndSetLock;33;1;373792;120407;44
+14TestAndSetLock;33;1;382651;91950;49
+14TestAndSetLock;33;1;382537;135101;36
+14TestAndSetLock;33;1;381223;146882;33
+14TestAndSetLock;33;1;372646;137305;29
+14TestAndSetLock;33;1;367127;147370;26
+14TestAndSetLock;33;1;371648;103157;55
+14TestAndSetLock;33;1;359685;93299;43
+14TestAndSetLock;33;1;344555;115216;45
+14TestAndSetLock;33;1;335667;152699;35
+14TestAndSetLock;33;1;356841;97378;45
+14TestAndSetLock;33;1;366899;103271;51
+14TestAndSetLock;33;1;349477;142387;43
+14TestAndSetLock;33;1;347236;141339;41
+14TestAndSetLock;33;1;367533;111444;53
+14TestAndSetLock;33;1;337008;150910;22
+14TestAndSetLock;33;1;362779;124961;55
+14TestAndSetLock;33;1;384550;136089;55
+14TestAndSetLock;33;1;387332;83599;62
+14TestAndSetLock;33;1;345686;107001;19
+14TestAndSetLock;33;1;315360;92237;47
+14TestAndSetLock;33;1;371925;116399;47
+14TestAndSetLock;33;1;356527;136336;17
+14TestAndSetLock;33;1;358849;111168;38
+14TestAndSetLock;33;1;307492;216107;6
+14TestAndSetLock;33;1;343951;128823;36
+14TestAndSetLock;33;1;363018;110029;48
+14TestAndSetLock;33;1;351088;130146;48
+Throughput benchmark started! Measure number of operations in given time slot.
+Maximum number of threads for this system: 33
+Benchmark started! Number of threads: 33 | Time frame: 1 s
+Benchmark started for 21TestAndTestAndSetLock ...
+21TestAndTestAndSetLock;33;1;1944086;502992;1
+21TestAndTestAndSetLock;33;1;2487162;863756;1
+21TestAndTestAndSetLock;33;1;2491829;935377;1
+21TestAndTestAndSetLock;33;1;2472457;841330;1
+21TestAndTestAndSetLock;33;1;2300749;1394663;1
+21TestAndTestAndSetLock;33;1;2587918;787068;1
+21TestAndTestAndSetLock;33;1;2069538;1288466;1
+21TestAndTestAndSetLock;33;1;2398128;1253172;1
+21TestAndTestAndSetLock;33;1;2157028;1529724;1
+21TestAndTestAndSetLock;33;1;2241411;1322743;1
+21TestAndTestAndSetLock;33;1;2633482;949565;1
+21TestAndTestAndSetLock;33;1;2088618;1509422;1
+21TestAndTestAndSetLock;33;1;2502535;581837;1
+21TestAndTestAndSetLock;33;1;2008443;1518624;1
+21TestAndTestAndSetLock;33;1;2208546;1205616;1
+21TestAndTestAndSetLock;33;1;2070581;1153901;1
+21TestAndTestAndSetLock;33;1;2297019;830534;1
+21TestAndTestAndSetLock;33;1;2597130;763128;1
+21TestAndTestAndSetLock;33;1;2535804;963390;1
+21TestAndTestAndSetLock;33;1;2422495;976479;1
+21TestAndTestAndSetLock;33;1;2457742;862126;1
+21TestAndTestAndSetLock;33;1;2487702;965571;1
+21TestAndTestAndSetLock;33;1;2327786;878697;1
+21TestAndTestAndSetLock;33;1;2231935;1228283;1
+21TestAndTestAndSetLock;33;1;2296549;905032;1
+21TestAndTestAndSetLock;33;1;2332084;869173;1
+21TestAndTestAndSetLock;33;1;2258388;1190900;1
+21TestAndTestAndSetLock;33;1;2830989;1640608;1
+21TestAndTestAndSetLock;33;1;2091076;1352711;1
+21TestAndTestAndSetLock;33;1;2289372;929763;1

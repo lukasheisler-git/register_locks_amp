@@ -1,0 +1,124 @@
+Correctnes benchmark started! Measure if lock works
+Maximum number of threads for this system: 16
+Benchmark started! Number of threads: 2
+
+Testing correctness of Petersons Filter lock...
+___________________________________________________________________
+
+Testing correctness of Lamport Bakery Herlihy lock...
+___________________________________________________________________
+
+Testing correctness of Lamport Bakery original lock...
+___________________________________________________________________
+
+Testing correctness of Petersons Tournament tree lock...
+___________________________________________________________________
+
+Testing correctness of Boulangerie lock...
+___________________________________________________________________
+
+Testing correctness of C11 mutex lock...
+___________________________________________________________________
+
+Testing correctness of OpenMP lock...
+___________________________________________________________________
+
+Testing correctness of test and set lock...
+___________________________________________________________________
+
+Testing correctness of test and test and set lock...
+___________________________________________________________________
+
+Correctnes benchmark started! Measure if lock works
+Maximum number of threads for this system: 16
+Benchmark started! Number of threads: 4
+
+Testing correctness of Petersons Filter lock...
+___________________________________________________________________
+
+Testing correctness of Lamport Bakery Herlihy lock...
+___________________________________________________________________
+
+Testing correctness of Lamport Bakery original lock...
+___________________________________________________________________
+
+Testing correctness of Petersons Tournament tree lock...
+___________________________________________________________________
+
+Testing correctness of Boulangerie lock...
+___________________________________________________________________
+
+Testing correctness of C11 mutex lock...
+___________________________________________________________________
+
+Testing correctness of OpenMP lock...
+___________________________________________________________________
+
+Testing correctness of test and set lock...
+___________________________________________________________________
+
+Testing correctness of test and test and set lock...
+___________________________________________________________________
+
+Correctnes benchmark started! Measure if lock works
+Maximum number of threads for this system: 16
+Benchmark started! Number of threads: 8
+
+Testing correctness of Petersons Filter lock...
+___________________________________________________________________
+
+Testing correctness of Lamport Bakery Herlihy lock...
+___________________________________________________________________
+
+Testing correctness of Lamport Bakery original lock...
+___________________________________________________________________
+
+Testing correctness of Petersons Tournament tree lock...
+___________________________________________________________________
+
+Testing correctness of Boulangerie lock...
+___________________________________________________________________
+
+Testing correctness of C11 mutex lock...
+___________________________________________________________________
+
+Testing correctness of OpenMP lock...
+___________________________________________________________________
+
+Testing correctness of test and set lock...
+___________________________________________________________________
+
+Testing correctness of test and test and set lock...
+___________________________________________________________________
+
+Correctnes benchmark started! Measure if lock works
+Maximum number of threads for this system: 16
+Benchmark started! Number of threads: 16
+
+Testing correctness of Petersons Filter lock...
+___________________________________________________________________
+
+Testing correctness of Lamport Bakery Herlihy lock...
+___________________________________________________________________
+
+Testing correctness of Lamport Bakery original lock...
+___________________________________________________________________
+
+Testing correctness of Petersons Tournament tree lock...
+___________________________________________________________________
+
+Testing correctness of Boulangerie lock...
+___________________________________________________________________
+
+Testing correctness of C11 mutex lock...
+___________________________________________________________________
+
+Testing correctness of OpenMP lock...
+___________________________________________________________________
+
+Testing correctness of test and set lock...
+___________________________________________________________________
+
+Testing correctness of test and test and set lock...
+___________________________________________________________________
+
