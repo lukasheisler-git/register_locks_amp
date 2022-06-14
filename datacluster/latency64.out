@@ -1,0 +1,306 @@
+Latency benchmark started! Measure time for lock operation.
+Maximum number of threads for this system: 64
+Benchmark started! Number of threads: 64
+Benchmark started for 19PetersonsFilterLock ...
+19PetersonsFilterLock;64;0.001642;0.140886
+19PetersonsFilterLock;64;0.001530;0.021564
+19PetersonsFilterLock;64;0.001528;0.001918
+19PetersonsFilterLock;64;0.001528;0.019776
+19PetersonsFilterLock;64;0.001524;0.003632
+19PetersonsFilterLock;64;0.001538;0.001983
+19PetersonsFilterLock;64;0.001532;0.010021
+19PetersonsFilterLock;64;0.001530;0.003691
+19PetersonsFilterLock;64;0.001533;0.001919
+19PetersonsFilterLock;64;0.001534;0.003649
+19PetersonsFilterLock;64;0.001523;0.002005
+19PetersonsFilterLock;64;0.001530;0.002013
+19PetersonsFilterLock;64;0.001536;0.002019
+19PetersonsFilterLock;64;0.001535;0.009947
+19PetersonsFilterLock;64;0.001532;0.001944
+19PetersonsFilterLock;64;0.001524;0.001948
+19PetersonsFilterLock;64;0.001530;0.001955
+19PetersonsFilterLock;64;0.001524;0.001984
+19PetersonsFilterLock;64;0.001533;0.002007
+19PetersonsFilterLock;64;0.001530;0.009938
+19PetersonsFilterLock;64;0.001529;0.002063
+19PetersonsFilterLock;64;0.001531;0.001960
+19PetersonsFilterLock;64;0.001538;0.002061
+19PetersonsFilterLock;64;0.001528;0.001924
+19PetersonsFilterLock;64;0.001531;0.001978
+19PetersonsFilterLock;64;0.001533;0.001915
+19PetersonsFilterLock;64;0.001535;0.009900
+19PetersonsFilterLock;64;0.001527;0.001963
+19PetersonsFilterLock;64;0.001535;0.002024
+19PetersonsFilterLock;64;0.001529;0.001954
+Latency benchmark started! Measure time for lock operation.
+Maximum number of threads for this system: 64
+Benchmark started! Number of threads: 64
+Benchmark started for 24LamportBakeryHerlihyLock ...
+24LamportBakeryHerlihyLock;64;0.000435;0.175976
+24LamportBakeryHerlihyLock;64;0.000094;0.000113
+24LamportBakeryHerlihyLock;64;0.000100;0.000271
+24LamportBakeryHerlihyLock;64;0.000095;0.000114
+24LamportBakeryHerlihyLock;64;0.000107;0.000128
+24LamportBakeryHerlihyLock;64;0.000105;0.000120
+24LamportBakeryHerlihyLock;64;0.000112;0.003650
+24LamportBakeryHerlihyLock;64;0.000110;0.000130
+24LamportBakeryHerlihyLock;64;0.000114;0.000139
+24LamportBakeryHerlihyLock;64;0.000105;0.000128
+24LamportBakeryHerlihyLock;64;0.000099;0.000120
+24LamportBakeryHerlihyLock;64;0.000099;0.000127
+24LamportBakeryHerlihyLock;64;0.000107;0.000134
+24LamportBakeryHerlihyLock;64;0.000103;0.000126
+24LamportBakeryHerlihyLock;64;0.000103;0.000123
+24LamportBakeryHerlihyLock;64;0.000110;0.004042
+24LamportBakeryHerlihyLock;64;0.000112;0.000170
+24LamportBakeryHerlihyLock;64;0.000097;0.000116
+24LamportBakeryHerlihyLock;64;0.000096;0.000117
+24LamportBakeryHerlihyLock;64;0.000101;0.000127
+24LamportBakeryHerlihyLock;64;0.000092;0.000106
+24LamportBakeryHerlihyLock;64;0.000103;0.000197
+24LamportBakeryHerlihyLock;64;0.000104;0.000123
+24LamportBakeryHerlihyLock;64;0.000108;0.000125
+24LamportBakeryHerlihyLock;64;0.000110;0.000130
+24LamportBakeryHerlihyLock;64;0.000111;0.000133
+24LamportBakeryHerlihyLock;64;0.000098;0.000117
+24LamportBakeryHerlihyLock;64;0.000104;0.000120
+24LamportBakeryHerlihyLock;64;0.000104;0.000124
+24LamportBakeryHerlihyLock;64;0.000104;0.000118
+Latency benchmark started! Measure time for lock operation.
+Maximum number of threads for this system: 64
+Benchmark started! Number of threads: 64
+Benchmark started for 25LamportBakeryOriginalLock ...
+25LamportBakeryOriginalLock;64;0.001142;0.071978
+25LamportBakeryOriginalLock;64;0.000136;0.000153
+25LamportBakeryOriginalLock;64;0.000133;0.000154
+25LamportBakeryOriginalLock;64;0.000137;0.000152
+25LamportBakeryOriginalLock;64;0.000134;0.000158
+25LamportBakeryOriginalLock;64;0.000135;0.000152
+25LamportBakeryOriginalLock;64;0.000127;0.000147
+25LamportBakeryOriginalLock;64;0.000131;0.004194
+25LamportBakeryOriginalLock;64;0.000130;0.000169
+25LamportBakeryOriginalLock;64;0.000138;0.000157
+25LamportBakeryOriginalLock;64;0.000128;0.000144
+25LamportBakeryOriginalLock;64;0.000127;0.000143
+25LamportBakeryOriginalLock;64;0.000130;0.000157
+25LamportBakeryOriginalLock;64;0.000127;0.000144
+25LamportBakeryOriginalLock;64;0.000133;0.000209
+25LamportBakeryOriginalLock;64;0.000127;0.000146
+25LamportBakeryOriginalLock;64;0.000139;0.000159
+25LamportBakeryOriginalLock;64;0.000129;0.000154
+25LamportBakeryOriginalLock;64;0.000123;0.000146
+25LamportBakeryOriginalLock;64;0.000126;0.000146
+25LamportBakeryOriginalLock;64;0.000135;0.000360
+25LamportBakeryOriginalLock;64;0.000124;0.000155
+25LamportBakeryOriginalLock;64;0.000139;0.002305
+25LamportBakeryOriginalLock;64;0.000121;0.000151
+25LamportBakeryOriginalLock;64;0.000120;0.000137
+25LamportBakeryOriginalLock;64;0.000122;0.000138
+25LamportBakeryOriginalLock;64;0.000135;0.000151
+25LamportBakeryOriginalLock;64;0.000127;0.000142
+25LamportBakeryOriginalLock;64;0.000135;0.000157
+25LamportBakeryOriginalLock;64;0.000134;0.000160
+Latency benchmark started! Measure time for lock operation.
+Maximum number of threads for this system: 64
+Benchmark started! Number of threads: 64
+Benchmark started for 13PetersonsTree ...
+13PetersonsTree;64;0.000235;0.108095
+13PetersonsTree;64;0.000273;0.016281
+13PetersonsTree;64;0.000279;0.000308
+13PetersonsTree;64;0.000274;0.003074
+13PetersonsTree;64;0.000288;0.000323
+13PetersonsTree;64;0.000273;0.000298
+13PetersonsTree;64;0.000277;0.000297
+13PetersonsTree;64;0.000281;0.002984
+13PetersonsTree;64;0.000281;0.000320
+13PetersonsTree;64;0.000282;0.000303
+13PetersonsTree;64;0.000274;0.000296
+13PetersonsTree;64;0.000280;0.000301
+13PetersonsTree;64;0.000273;0.000291
+13PetersonsTree;64;0.000280;0.000304
+13PetersonsTree;64;0.000275;0.000359
+13PetersonsTree;64;0.000285;0.002062
+13PetersonsTree;64;0.000286;0.000309
+13PetersonsTree;64;0.000277;0.000295
+13PetersonsTree;64;0.000285;0.000482
+13PetersonsTree;64;0.000269;0.000290
+13PetersonsTree;64;0.000279;0.000298
+13PetersonsTree;64;0.000275;0.009120
+13PetersonsTree;64;0.000283;0.002181
+13PetersonsTree;64;0.000281;0.000299
+13PetersonsTree;64;0.000278;0.000299
+13PetersonsTree;64;0.000274;0.000358
+13PetersonsTree;64;0.000277;0.000295
+13PetersonsTree;64;0.000278;0.000299
+13PetersonsTree;64;0.000279;0.000299
+13PetersonsTree;64;0.000280;0.002203
+Latency benchmark started! Measure time for lock operation.
+Maximum number of threads for this system: 64
+Benchmark started! Number of threads: 64
+Benchmark started for 15BoulangerieLock ...
+15BoulangerieLock;64;0.000475;0.214185
+15BoulangerieLock;64;0.000120;0.000145
+15BoulangerieLock;64;0.000121;0.000147
+15BoulangerieLock;64;0.000118;0.000216
+15BoulangerieLock;64;0.000122;0.000145
+15BoulangerieLock;64;0.000121;0.008883
+15BoulangerieLock;64;0.000127;0.000146
+15BoulangerieLock;64;0.000121;0.000143
+15BoulangerieLock;64;0.000117;0.000138
+15BoulangerieLock;64;0.000122;0.000170
+15BoulangerieLock;64;0.000129;0.000152
+15BoulangerieLock;64;0.000122;0.000147
+15BoulangerieLock;64;0.000131;0.000160
+15BoulangerieLock;64;0.000124;0.005155
+15BoulangerieLock;64;0.000121;0.000144
+15BoulangerieLock;64;0.000112;0.000135
+15BoulangerieLock;64;0.000118;0.000141
+15BoulangerieLock;64;0.000122;0.000147
+15BoulangerieLock;64;0.000118;0.000149
+15BoulangerieLock;64;0.000125;0.000151
+15BoulangerieLock;64;0.000127;0.000149
+15BoulangerieLock;64;0.000123;0.001244
+15BoulangerieLock;64;0.000125;0.000147
+15BoulangerieLock;64;0.000125;0.000154
+15BoulangerieLock;64;0.000124;0.000145
+15BoulangerieLock;64;0.000128;0.000172
+15BoulangerieLock;64;0.000128;0.000147
+15BoulangerieLock;64;0.000132;0.000154
+15BoulangerieLock;64;0.000126;0.000145
+15BoulangerieLock;64;0.000125;0.000144
+Latency benchmark started! Measure time for lock operation.
+Maximum number of threads for this system: 64
+Benchmark started! Number of threads: 64
+Benchmark started for 7C11Lock ...
+7C11Lock;64;0.000012;0.008822
+7C11Lock;64;0.000013;0.005735
+7C11Lock;64;0.000013;0.005078
+7C11Lock;64;0.000013;0.006027
+7C11Lock;64;0.000013;0.002467
+7C11Lock;64;0.000014;0.002337
+7C11Lock;64;0.000014;0.000645
+7C11Lock;64;0.000014;0.000607
+7C11Lock;64;0.000013;0.000513
+7C11Lock;64;0.000013;0.000546
+7C11Lock;64;0.000014;0.000508
+7C11Lock;64;0.000014;0.000600
+7C11Lock;64;0.000014;0.000815
+7C11Lock;64;0.000014;0.000670
+7C11Lock;64;0.000014;0.000585
+7C11Lock;64;0.000014;0.000443
+7C11Lock;64;0.000013;0.000529
+7C11Lock;64;0.000014;0.000487
+7C11Lock;64;0.000013;0.000644
+7C11Lock;64;0.000013;0.000610
+7C11Lock;64;0.000014;0.000603
+7C11Lock;64;0.000014;0.000540
+7C11Lock;64;0.000014;0.000488
+7C11Lock;64;0.000013;0.000606
+7C11Lock;64;0.000013;0.000560
+7C11Lock;64;0.000014;0.000572
+7C11Lock;64;0.000014;0.000505
+7C11Lock;64;0.000014;0.000546
+7C11Lock;64;0.000014;0.000713
+7C11Lock;64;0.000014;0.000574
+Latency benchmark started! Measure time for lock operation.
+Maximum number of threads for this system: 64
+Benchmark started! Number of threads: 64
+Benchmark started for 10OpenMPLock ...
+10OpenMPLock;64;0.000013;0.015838
+10OpenMPLock;64;0.000027;0.017581
+10OpenMPLock;64;0.000027;0.015578
+10OpenMPLock;64;0.000027;0.015256
+10OpenMPLock;64;0.000028;0.013310
+10OpenMPLock;64;0.000028;0.012990
+10OpenMPLock;64;0.000028;0.012186
+10OpenMPLock;64;0.000028;0.012954
+10OpenMPLock;64;0.000029;0.011760
+10OpenMPLock;64;0.000028;0.012804
+10OpenMPLock;64;0.000028;0.009295
+10OpenMPLock;64;0.000029;0.008788
+10OpenMPLock;64;0.000028;0.008800
+10OpenMPLock;64;0.000028;0.009131
+10OpenMPLock;64;0.000028;0.010689
+10OpenMPLock;64;0.000027;0.011090
+10OpenMPLock;64;0.000028;0.010199
+10OpenMPLock;64;0.000029;0.011615
+10OpenMPLock;64;0.000028;0.010905
+10OpenMPLock;64;0.000027;0.012327
+10OpenMPLock;64;0.000029;0.011738
+10OpenMPLock;64;0.000027;0.014135
+10OpenMPLock;64;0.000027;0.008444
+10OpenMPLock;64;0.000027;0.011970
+10OpenMPLock;64;0.000027;0.014511
+10OpenMPLock;64;0.000028;0.011300
+10OpenMPLock;64;0.000031;0.013455
+10OpenMPLock;64;0.000027;0.012316
+10OpenMPLock;64;0.000027;0.013109
+10OpenMPLock;64;0.000028;0.013871
+Latency benchmark started! Measure time for lock operation.
+Maximum number of threads for this system: 64
+Benchmark started! Number of threads: 64
+Benchmark started for 14TestAndSetLock ...
+14TestAndSetLock;64;0.000076;0.072610
+14TestAndSetLock;64;0.000099;0.017028
+14TestAndSetLock;64;0.000121;0.040910
+14TestAndSetLock;64;0.000094;0.028848
+14TestAndSetLock;64;0.000096;0.039717
+14TestAndSetLock;64;0.000099;0.033803
+14TestAndSetLock;64;0.000101;0.027605
+14TestAndSetLock;64;0.000095;0.044721
+14TestAndSetLock;64;0.000090;0.025376
+14TestAndSetLock;64;0.000089;0.020035
+14TestAndSetLock;64;0.000096;0.016039
+14TestAndSetLock;64;0.000101;0.045272
+14TestAndSetLock;64;0.000081;0.016534
+14TestAndSetLock;64;0.000113;0.044312
+14TestAndSetLock;64;0.000089;0.015784
+14TestAndSetLock;64;0.000118;0.033981
+14TestAndSetLock;64;0.000107;0.020696
+14TestAndSetLock;64;0.000093;0.037334
+14TestAndSetLock;64;0.000097;0.023067
+14TestAndSetLock;64;0.000080;0.022334
+14TestAndSetLock;64;0.000073;0.016308
+14TestAndSetLock;64;0.000092;0.041970
+14TestAndSetLock;64;0.000105;0.039214
+14TestAndSetLock;64;0.000094;0.032924
+14TestAndSetLock;64;0.000083;0.018800
+14TestAndSetLock;64;0.000084;0.019517
+14TestAndSetLock;64;0.000083;0.025286
+14TestAndSetLock;64;0.000082;0.028105
+14TestAndSetLock;64;0.000085;0.031911
+14TestAndSetLock;64;0.000094;0.039990
+Latency benchmark started! Measure time for lock operation.
+Maximum number of threads for this system: 64
+Benchmark started! Number of threads: 64
+Benchmark started for 21TestAndTestAndSetLock ...
+21TestAndTestAndSetLock;64;0.000016;0.024079
+21TestAndTestAndSetLock;64;0.000023;0.027427
+21TestAndTestAndSetLock;64;0.000042;0.047389
+21TestAndTestAndSetLock;64;0.000025;0.029301
+21TestAndTestAndSetLock;64;0.000026;0.027419
+21TestAndTestAndSetLock;64;0.000025;0.026024
+21TestAndTestAndSetLock;64;0.000040;0.041256
+21TestAndTestAndSetLock;64;0.000041;0.043046
+21TestAndTestAndSetLock;64;0.000024;0.025640
+21TestAndTestAndSetLock;64;0.000024;0.024370
+21TestAndTestAndSetLock;64;0.000025;0.025254
+21TestAndTestAndSetLock;64;0.000025;0.026558
+21TestAndTestAndSetLock;64;0.000025;0.027151
+21TestAndTestAndSetLock;64;0.000025;0.025631
+21TestAndTestAndSetLock;64;0.000025;0.027232
+21TestAndTestAndSetLock;64;0.000024;0.027985
+21TestAndTestAndSetLock;64;0.000025;0.026824
+21TestAndTestAndSetLock;64;0.000040;0.043636
+21TestAndTestAndSetLock;64;0.000025;0.027359
+21TestAndTestAndSetLock;64;0.000025;0.030003
+21TestAndTestAndSetLock;64;0.000026;0.028095
+21TestAndTestAndSetLock;64;0.000026;0.031108
+21TestAndTestAndSetLock;64;0.000025;0.027607
+21TestAndTestAndSetLock;64;0.000026;0.028891
+21TestAndTestAndSetLock;64;0.000026;0.028701
+21TestAndTestAndSetLock;64;0.000026;0.028830
+21TestAndTestAndSetLock;64;0.000027;0.027809
+21TestAndTestAndSetLock;64;0.000026;0.028467
+21TestAndTestAndSetLock;64;0.000026;0.028325
+21TestAndTestAndSetLock;64;0.000026;0.025824

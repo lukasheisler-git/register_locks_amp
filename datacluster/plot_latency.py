@@ -7,6 +7,23 @@ import sys
 import matplotlib.pyplot as plt
 
 
+SMALL_SIZE = 12
+MEDIUM_SIZE = 14
+BIGGER_SIZE = 16
+
+plt.rc('font', size=SMALL_SIZE)          # controls default text sizes
+plt.rc('axes', titlesize=SMALL_SIZE)     # fontsize of the axes title
+plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
+plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+plt.rc('legend', fontsize=SMALL_SIZE)    # legend fontsize
+plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
+plt.rcParams["figure.figsize"] = (12,8)
+
+
+
+
+
 data = pd.read_csv('bm_result_latency/latency.out', sep=";", header=None)
 #print(data[0][1])  # data[col][row]
 
@@ -96,63 +113,29 @@ fillPower2(filterLock, herlihy, lamport, tournament, boulangery, c11, openMP, ta
 start_ = 540
 fillPower2(filterLock, herlihy, lamport, tournament, boulangery, c11, openMP, tas, tatas, start_)
 
+# 16 threads .. line 810
+start_ = 810
+fillPower2(filterLock, herlihy, lamport, tournament, boulangery, c11, openMP, tas, tatas, start_)
 
+# 23 threads .. line 1080
+start_ = 1080
+fillOther(filterLock, herlihy, lamport, boulangery, c11, openMP, tas, tatas, start_)
 
+# 32 threads ... line 1320
+start_ = 1320
+fillPower2(filterLock, herlihy, lamport, tournament, boulangery, c11, openMP, tas, tatas, start_)
 
+# 43 threads .. line 1590
+start_ = 1590
+fillOther(filterLock, herlihy, lamport, boulangery, c11, openMP, tas, tatas, start_)
 
+# 53 threads .. line 1830
+start_ = 1830
+fillOther(filterLock, herlihy, lamport, boulangery, c11, openMP, tas, tatas, start_)
 
-
-# 3 threads ... line 270
-# start_ = 270
-# fillOther(filterLock, herlihy, lamport, boulangery, c11, openMP, tas, tatas, start_)
-
-# # 4 threads ... line 510
-# start_ = 510
-# fillPower2(filterLock, herlihy, lamport, tournament, boulangery, c11, openMP, tas, tatas, start_)
-
-# # 8 threads ... line 780
-# start_ = 780
-# fillPower2(filterLock, herlihy, lamport, tournament, boulangery, c11, openMP, tas, tatas, start_)
-
-# # 13 threads ... line 1050
-# start_ = 1050
-# fillOther(filterLock, herlihy, lamport, boulangery, c11, openMP, tas, tatas, start_)
-
-# # 16 threads ... line 1290
-# start_ = 1290
-# fillPower2(filterLock, herlihy, lamport, tournament, boulangery, c11, openMP, tas, tatas, start_)
-
-# # 21 threads ... line 1560
-# start_ = 1560
-# fillOther(filterLock, herlihy, lamport, boulangery, c11, openMP, tas, tatas, start_)
-
-# # 32 threads ... line 1800
-# start_ = 1800
-# fillPower2(filterLock, herlihy, lamport, tournament, boulangery, c11, openMP, tas, tatas, start_)
-
-# # 35 threads ... line 2070
-# start_ = 2070
-# fillOther(filterLock, herlihy, lamport, boulangery, c11, openMP, tas, tatas, start_)
-
-# # 48 threads .. line 2310
-# start_ = 2310
-# fillOther(filterLock, herlihy, lamport, boulangery, c11, openMP, tas, tatas, start_)
-
-# # 53 threads ... line 2550
-# start_ = 2550
-# fillOther(filterLock, herlihy, lamport, boulangery, c11, openMP, tas, tatas, start_)
-
-# # 63 threads ... line 2790
-# start_ = 2790
-# fillOther(filterLock, herlihy, lamport, boulangery, c11, openMP, tas, tatas, start_)
-
-# # end 3030...
-
-
-
-
-#print(filterLock)
-#print(data[0][30:60])
+# 32 threads ... line 2070
+start_ = 2070
+fillPower2(filterLock, herlihy, lamport, tournament, boulangery, c11, openMP, tas, tatas, start_)
 
 
 # plotting
@@ -161,23 +144,25 @@ def plot_lock(lockList, lockName):
     plt.plot(lockList[0], np.asarray(lockList[1]), label="Latency per lock")
     plt.plot(lockList[0], np.asarray(lockList[2]), label="Maximum latency")
     plt.title(lockName)
+    plt.yscale("log")
     plt.legend()
     plt.show()
 
 # this plots one single plot for each lock
-plot_lock(filterLock, "Filter lock")
-plot_lock(herlihy, "Bakery lock - Herlihy/Shavit")
-plot_lock(lamport, "Bakery lock - Original Lamport")
-plot_lock(boulangery, "Boulangerie lock")
-plot_lock(tournament, "Binary tree lock")
-plot_lock(c11, "C11 lock")
-plot_lock(openMP, "OpenMP lock")
-plot_lock(tas, "Test And Set lock")
-plot_lock(tatas, "Test And Test And Set lock")
+# plot_lock(filterLock, "Filter lock")
+# plot_lock(herlihy, "Bakery lock - Herlihy/Shavit")
+# plot_lock(lamport, "Bakery lock - Original Lamport")
+# plot_lock(boulangery, "Boulangerie lock")
+# plot_lock(tournament, "Binary tree lock")
+# plot_lock(c11, "C11 lock")
+# plot_lock(openMP, "OpenMP lock")
+# plot_lock(tas, "Test And Set lock")
+# plot_lock(tatas, "Test And Test And Set lock")
 
 def plot_lock2(lockList, lockName):
-    plt.plot(lockList[0], np.asarray(lockList[2]), label=lockName)
+    plt.plot(lockList[0], np.asarray(lockList[1]), label=lockName)
     #plt.plot(lockList[0], np.asarray(lockList[2]), label=lockName)
+    plt.yscale("log")
 
     
 
@@ -192,8 +177,11 @@ def plot_totalCounts(filterLock, herlihy, lamport, tournament, boulangery, c11, 
     plot_lock2(openMP, "OpenMP lock")
     plot_lock2(tas, "Test And Set lock")
     plot_lock2(tatas, "Test And Test And Set lock")
-    plt.title("Maximum latency")
+    plt.xlabel('Number of threads')
+    plt.ylabel('Lock acquisition latency')
+    plt.title("Mean latency")
     plt.legend()
+    # plt.savefig("plots/meanLatency.png")
     plt.show()
 
 # this plots all locks in one plot

@@ -7,6 +7,20 @@ import sys
 import matplotlib.pyplot as plt
 
 
+SMALL_SIZE = 12
+MEDIUM_SIZE = 14
+BIGGER_SIZE = 16
+
+plt.rc('font', size=SMALL_SIZE)          # controls default text sizes
+plt.rc('axes', titlesize=SMALL_SIZE)     # fontsize of the axes title
+plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
+plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+plt.rc('legend', fontsize=SMALL_SIZE)    # legend fontsize
+plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
+plt.rcParams["figure.figsize"] = (12,8)
+
+
 data = pd.read_csv('bm_result_throughput/throughput.out', sep=";", header=None)
 #print(data[0][1])  # data[col][row]
 
@@ -150,23 +164,25 @@ def plot_lock(lockList, lockName):
     plt.plot(lockList[3], np.asarray(lockList[0]) / np.asarray(lockList[3]), label="Total counts per thread")
     plt.plot(lockList[3], np.asarray(lockList[1]), label="Maximum counts")
     plt.plot(lockList[3], np.asarray(lockList[2]), label="Minimum counts")
+    plt.yscale("log")
     plt.title(lockName)
     plt.legend()
     plt.show()
 
 # this plots one single plot for each lock
-plot_lock(filterLock, "Filter lock")
-plot_lock(herlihy, "Bakery lock - Herlihy/Shavit")
-plot_lock(lamport, "Bakery lock - Original Lamport")
-plot_lock(boulangery, "Boulangerie lock")
-plot_lock(tournament, "Binary tree lock")
-plot_lock(c11, "C11 lock")
-plot_lock(openMP, "OpenMP lock")
-plot_lock(tas, "Test And Set lock")
-plot_lock(tatas, "Test And Test And Set lock")
+# plot_lock(filterLock, "Filter lock")
+# plot_lock(herlihy, "Bakery lock - Herlihy/Shavit")
+# plot_lock(lamport, "Bakery lock - Original Lamport")
+# plot_lock(boulangery, "Boulangerie lock")
+# plot_lock(tournament, "Binary tree lock")
+# plot_lock(c11, "C11 lock")
+# plot_lock(openMP, "OpenMP lock")
+# plot_lock(tas, "Test And Set lock")
+# plot_lock(tatas, "Test And Test And Set lock")
 
 def plot_lock2(lockList, lockName):
     plt.plot(lockList[3], np.asarray(lockList[0]), label=lockName)
+    plt.yscale("log")
     
 
 def plot_totalCounts(filterLock, herlihy, lamport, tournament, boulangery, c11, openMP, tas, tatas):
@@ -175,13 +191,16 @@ def plot_totalCounts(filterLock, herlihy, lamport, tournament, boulangery, c11, 
     plot_lock2(herlihy, "Bakery lock - Herlihy/Shavit")
     plot_lock2(lamport, "Bakery lock - Original Lamport")
     plot_lock2(boulangery, "Boulangerie lock")
-    plot_lock2(tournament, "Binary tree lock")
+    # plot_lock2(tournament, "Binary tree lock")
     plot_lock2(c11, "C11 lock")
     plot_lock2(openMP, "OpenMP lock")
     plot_lock2(tas, "Test And Set lock")
     plot_lock2(tatas, "Test And Test And Set lock")
+    plt.xlabel('Number of threads')
+    plt.ylabel('Lock acquisition per second')
     plt.title("Total lock acquisitions")
     plt.legend()
+    # plt.savefig('lockAcqs.png')
     plt.show()
 
 # this plots all locks in one plot

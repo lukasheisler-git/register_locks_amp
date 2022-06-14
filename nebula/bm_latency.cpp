@@ -11,7 +11,7 @@
 #include "locks.hpp"
 
 const int REPS = 30;
-const int OPERATIONS = 1e5;
+const int OPERATIONS = 1000;
 
 std::vector<double> testLatency(auto &lock){
     

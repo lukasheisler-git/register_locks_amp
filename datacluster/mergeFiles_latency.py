@@ -27,3 +27,10 @@ def stripAndMerge(filename):
 stripAndMerge("latency2.out")
 stripAndMerge("latency4.out")
 stripAndMerge("latency8.out")
+stripAndMerge("latency16.out")
+stripAndMerge("latency23.out")
+stripAndMerge("latency32.out")
+stripAndMerge("latency43.out")
+stripAndMerge("latency53.out")
+stripAndMerge("latency64.out")
+
