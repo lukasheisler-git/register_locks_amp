@@ -65,15 +65,47 @@ def plotLock(lockname):
     # plt.savefig("plots/" + lockname + "_throughput.png")
     plt.show()
 
-plotLock('PetersonsFilterLock')
-plotLock('LamportBakeryHerlihyLock')
-plotLock('LamportBakeryOriginalLock')
-plotLock('PetersonsTree')
-plotLock('BoulangerieLock')
-plotLock('CLock')
-plotLock('OpenMPLock')
-plotLock('TestAndSetLock')
-plotLock('TestAndTestAndSetLock')
+
+def plotLockFairness():
+
+    nameDict = {
+        'PetersonsFilterLock':'Filter Lock',
+        'LamportBakeryHerlihyLock': 'Bakery Lock - Herlihy/Shavit',
+        'LamportBakeryOriginalLock': 'Bakery Lock - Orignal',
+        'PetersonsTree' : 'Binary Tree Lock',
+        'BoulangerieLock' : 'Boulangerie Lock',
+        'CLock' : 'C11 - Lock',
+        'OpenMPLock' : 'OpenMP - Lock',
+        'TestAndSetLock' : 'Test And Set - Lock',
+        'TestAndTestAndSetLock' : 'Test And Test And Set Lock'
+    }
+    for key, value in nameDict.items():
+        filterData = data[data['lockname'] == key]
+        # print(filterData)
+        filterData['fairness'] = filterData['minCount']/filterData['maxCount']
+        
+        sns.lineplot(data = filterData, x="numThreads", y="fairness", ci='sd', label=key)
+
+    
+    plt.title('Fairness measure')
+    plt.xlabel('Number of threads')
+    plt.ylabel('minCount / maxCount')
+    plt.yscale('log')
+    plt.legend()
+    plt.savefig("overall_fairness.png")
+    plt.show()
+
+plotLockFairness()
+
+# plotLock('PetersonsFilterLock')
+# plotLock('LamportBakeryHerlihyLock')
+# plotLock('LamportBakeryOriginalLock')
+# plotLock('PetersonsTree')
+# plotLock('BoulangerieLock')
+# plotLock('CLock')
+# plotLock('OpenMPLock')
+# plotLock('TestAndSetLock')
+# plotLock('TestAndTestAndSetLock')
 
 
 
@@ -97,7 +129,7 @@ def plotLock2(lockname):
         'TestAndSetLock' : 'Test And Set - Lock',
         'TestAndTestAndSetLock' : 'Test And Test And Set Lock'
     }
-    
+
     plt.title(nameDict[lockname])
     plt.xlabel('Number of threads')
     plt.ylabel('Lock acquisition latency')
@@ -106,13 +138,13 @@ def plotLock2(lockname):
     # plt.savefig("plots/" + lockname + "_latency.png")
     plt.show()
 
-plotLock2('PetersonsFilterLock')
-plotLock2('LamportBakeryHerlihyLock')
-plotLock2('LamportBakeryOriginalLock')
-plotLock2('PetersonsTree')
-plotLock2('BoulangerieLock')
-plotLock2('CLock')
-plotLock2('OpenMPLock')
-plotLock2('TestAndSetLock')
-plotLock2('TestAndTestAndSetLock')
+# plotLock2('PetersonsFilterLock')
+# plotLock2('LamportBakeryHerlihyLock')
+# plotLock2('LamportBakeryOriginalLock')
+# plotLock2('PetersonsTree')
+# plotLock2('BoulangerieLock')
+# plotLock2('CLock')
+# plotLock2('OpenMPLock')
+# plotLock2('TestAndSetLock')
+# plotLock2('TestAndTestAndSetLock')
 
