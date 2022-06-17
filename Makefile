@@ -15,7 +15,7 @@ latency:
 
 .PHONY: clean
 clean:
-	rm -f bm_throughput
+	rm -f bm_fairness_throughput
 	rm -f bm_correctness
 	rm -f bm_latency
 
